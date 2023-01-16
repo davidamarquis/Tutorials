@@ -3,7 +3,6 @@ layout: post
 title:  "Pari debug"
 date: 2020-08-14 14:31:39
 ---
-\\[x^2=y^2\\]
 Recently I've spent a lot of time trying to read PARI code. This tutorial explains the best way I found for doing it, some basic debugging commands, and some ways to make using the debugger less painful.
 
 To start, lets review the options for debugging GP programs. There's nothing I could find in the docs specifically aimed at reading PARI source code but they do mention some methods for debugging your own GP scripts:
@@ -88,53 +87,30 @@ Running
 you should see some lines from the main function in gp.c in the main window.
 
 Visual debugging uses the PARI source files to let you move around the codebase. Clicking the *Fetch source files* button will load these files. If everything is working you should be able to open the PARI source directory.  
-<p>An image: <img src="imgs/image.png" alt="gras" /></p>
 
-the title  
-{{ site.title }}
-
-the email  
-{{ site.email }}
-
-the baseurl
-{{ site.baseurl }}
-
-the url
-{{ site.url }}
-
-{{ page.title }}
-![gdbgui](/blog/_site/imgs/image.png)
-
+Looking for image here {{ site.baseurl }}/imgs/image.png
 ![gdbgui](/imgs/image.png)
 
-![gdbgui](imgs/image.png)
-
-![gdbgui]({{ site.baseurl }}/imgs/image.png)
-
-![gdbgui](\imgs\image.png)
-A [link](http://kramdown.gettalong.org)
-to the kramdown homepage.
-
 Earlier we set a breakpoint using the gdb command line on the bnfinit0 function in buch2.c. We can navigate to this file by opening basemath/buch2.c in the src directory. To locate the function we can try the *jump to line* box.  
-![jumpto](./imgs/image2.png)
+![jumpto](/imgs/image2.png)
 
 To jump to the line where bnfinit0 is defined we can enter the line number found by entering info func bnfinit0 in the gdb prompt.
 
 We can place a breakpoint inside the function by clicking a line number in the left gutter.  
-![break](./imgs/image3.png)
+![break](/imgs/image3.png)
 
 To reach this breakpoint we start the program with the circle-arrow button in the top right.  
-![run](./imgs/image4.png)
+![run](/imgs/image4.png)
 
 The program starts running. However, it immediately hits a breakpoint that gdbgui automatically inserts in the main function of GP (this behavior can be turned off in preferences).  
-![firstbreak](./imgs/image5.png)
+![firstbreak](/imgs/image5.png)
 
 Using the play button in the top right lets the program continue. In the terminal you will see that GP has been loaded. On the gdb prompt we can enter the same GP code as above
-![cmd](./imgs/image6.png)
+![cmd](/imgs/image6.png)
 and which hits the breakpoint in the bnfinit0 function.
 
 Some useful features of debugging this way is the side menu which lets us easily work with local variables and breakpoints  
-![cmd](./imgs/image6.png)
+![cmd](/imgs/image6.png)
 
 Another good feature is tooltips. By moving the mouse over a variable we can see its value. Moving over a function shows the signature
-![tooltip](./imgs/image7.png)
+![tooltip](/imgs/image7.png)
